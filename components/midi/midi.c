@@ -106,7 +106,7 @@ void midi_note_on(uint8_t channel, uint8_t note, uint8_t velocity)
     enqueue_msg(&msg);
 }
 
-void IRAM_ATTR midi_note_on_from_isr(uint8_t channel, uint8_t note,
+void midi_note_on_from_isr(uint8_t channel, uint8_t note,
                                       uint8_t velocity)
 {
     midi_msg_t msg = {

@@ -1,0 +1,24 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "ESP-IDF: OpenOCD",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "openocd",
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}/build/zequencer.elf",
+            "configFiles": [
+                "${env:IDF_PATH}/components/openocd/contrib/board/esp32-wrover-kit.cfg"
+            ],
+            "autorun": [
+                "mon reset halt",
+                "load",
+                "mon reset init"
+            ],
+            "gdbpath": "/Users/mmarjanovic/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20251107/xtensa-esp32-elf/bin/xtensa-esp32-elf-gdb",
+            "device": "esp32",
+            "adapter": "ftdi"
+        }
+    ]
+}

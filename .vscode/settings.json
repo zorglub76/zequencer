@@ -1,0 +1,9 @@
+{
+    "idf.port": "/dev/ttyUSB0",
+    "idf.adapterTargetName": "esp32",
+    "idf.openOcdConfigFile": "${env:IDF_PATH}/components/openocd/contrib/board/esp32-wrover-kit.cfg",
+    "idf.buildConfig": "default",
+    "files.exclude": {
+        "**/build": true
+    }
+}
