@@ -1,0 +1,51 @@
+# zequencer/Kconfig.projbuild
+
+menu "Zequencer Configuration"
+
+    config ZEQ_MIDI_UART_PORT
+        int "MIDI UART port number"
+        default 1
+        range 1 2
+        help
+            UART port used for MIDI output (31250 baud).
+            UART0 is reserved for the debug console.
+
+    config ZEQ_MIDI_TX_GPIO
+        int "MIDI TX GPIO pin"
+        default 17
+        range 0 39
+        help
+            GPIO pin connected to the MIDI output circuit TX line.
+
+    config ZEQ_MIDI_DEFAULT_CHANNEL
+        int "Default MIDI channel (1–16)"
+        default 1
+        range 1 16
+
+    config ZEQ_SEQ_NUM_STEPS
+        int "Number of sequencer steps"
+        default 16
+        range 8 64
+        help
+            Maximum steps in one pattern. Must be a power of 2.
+
+    config ZEQ_SEQ_DEFAULT_BPM
+        int "Default BPM at startup"
+        default 120
+        range 20 300
+
+    config ZEQ_SEQ_DEFAULT_NOTE
+        int "Default MIDI note number (0–127)"
+        default 60
+        help
+            Middle C = 60. Used as the note for all active steps on startup.
+
+    config ZEQ_BLE_POSITION_INTERVAL_MS
+        int "BLE step-position feedback interval (ms)"
+        default 50
+        range 10 200
+        help
+            How often the current sequencer step position is broadcast
+            over BLE to the controller application.
+
+endmenu

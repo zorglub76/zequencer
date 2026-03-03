@@ -1,0 +1,19 @@
+menu "Zequencer sequencer settings"
+
+config ZEQ_SEQ_NUM_STEPS
+    int "Number of steps in pattern"
+    default 16
+
+config ZEQ_SEQ_DEFAULT_BPM
+    int "Default BPM for new patterns"
+    default 120
+
+config ZEQ_SEQ_DEFAULT_NOTE
+    int "Default MIDI note for new steps"
+    default 60
+
+config ZEQ_MIDI_DEFAULT_CHANNEL
+    int "Default MIDI channel (1-16)"
+    default 1
+
+endmenu

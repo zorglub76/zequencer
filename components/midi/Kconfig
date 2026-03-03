@@ -1,0 +1,11 @@
+menu "Zequencer MIDI settings"
+
+config ZEQ_MIDI_UART_PORT
+    int "UART port for MIDI output"
+    default 1
+
+config ZEQ_MIDI_TX_GPIO
+    int "GPIO number for MIDI TX"
+    default 17
+
+endmenu
