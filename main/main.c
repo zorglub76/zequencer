@@ -8,6 +8,8 @@
 #include <stdio.h>
 #include "esp_log.h"
 #include "nvs_flash.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 
 #include "sequencer.h"
 #include "midi.h"
@@ -22,22 +24,24 @@ static void nvs_init(void);
 /* ── Entry point ─────────────────────────────────────────────────────────── */
 void app_main(void)
 {
-    ESP_LOGI(TAG, "Zequencer starting up...");
-
     /* 1. Non-volatile storage — must be first; BLE and pattern save need it */
+    ESP_LOGI(TAG, "Zequencer starting up...");
     nvs_init();
 
     /* 2. MIDI output — UART must be ready before the sequencer fires notes */
     midi_init();
 
     /* 3. Sequencer engine — registers hardware timer ISR, does NOT start yet */
+    ESP_LOGI(TAG, "calling sequencer_init");
     sequencer_init();
 
     /* 4. BLE server — advertises and waits for the controller app to connect.
      *    Passes a callback so the controller can start/stop/update the pattern. */
+    ESP_LOGI(TAG, "calling ble_server_init");
     ble_server_init(sequencer_get_control_callbacks());
 
     /* 5. UI — GPIO buttons/encoder for local control */
+    ESP_LOGI(TAG, "calling ui_init");
     ui_init();
 
     /* 6. Start sequencing — timer ISR begins firing */
